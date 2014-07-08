@@ -1,5 +1,22 @@
 source 'https://rubygems.org'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'pry-rails'
+  gem 'capybara'
+  gem 'valid_attribute'
+  gem 'launchy'
+  gem 'email_spec'
+  gem 'dotenv-rails'
+end
+
+gem 'devise'
+gem 'kaminari'
+gem 'simple_form'
+gem 'rails_12factor'
+gem 'carrierwave'
+gem 'fog'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
