@@ -9,6 +9,7 @@ group :development, :test do
   gem 'launchy'
   gem 'email_spec'
   gem 'dotenv-rails'
+  gem 'quiet_assets'
 end
 
 gem 'devise'
