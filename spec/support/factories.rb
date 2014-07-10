@@ -10,6 +10,6 @@ FactoryGirl.define do
     state 'MA'
     zip_code '02139'
     about 'I am nice.'
-    # profile_photo
+    profile_photo { File.open(File.join(Rails.root, '/spec/support/example.jpg')) }
   end
 end
