@@ -20,7 +20,6 @@ feature 'user signs up', %Q(
 # - If I am signed in, I can't sign in again.
 
   scenario 'user specifies valid and required information' do
-    # user = FactoryGirl.create(:user)
 
     visit root_path
     click_link 'Sign Up'
@@ -33,7 +32,7 @@ feature 'user signs up', %Q(
     fill_in 'Street Address', with: '1234 Main Street'
     fill_in 'City', with: 'Cambridge'
     fill_in 'Zip Code', with: '02139'
-    fill_in 'About', with: 'I am nice'
+    fill_in 'About', with: 'I am nice.'
     # fill_in 'Profile Photo', with:
 
     expect(page).to have_content("You're in!")
