@@ -12,42 +12,70 @@ feature 'user signs up', %Q(
 # + I need to provide first name, last name, street address, city, state, and zip code.
 # + I need to have the option to add an about section.
 # - TODO I need to have the option to add a profile photo.
-# - I need to see a success message if sign up is successful.
+# + I need to see a success message if sign up is successful.
 # - I need to see an error message if sign up is unsuccessful.
 # - TODO I need to receive an email confirming my new account.
 # - If I enter an existing email/password, I am authenticated and get signed in.
-# - If I am signed in, I can't sign in again.
+#  If I am signed in, I can't sign in again.
 
   scenario 'user specifies valid and required information' do
-
+    user = FactoryGirl.build(:user)
     visit root_path
-    click_link 'Sign Up'
-    fill_in 'First Name', with: 'John'
-    fill_in 'Last Name', with: 'Smith'
-    fill_in 'Email', with: 'user@example.com'
-    fill_in 'user[password]', with: 'password'
-    fill_in 'user[password_confirmation]', with: 'password'
-    # find('.password').set 'password'
-    # find('.password-confirmation').set 'password'
+    click_link 'Sign up'
 
-    fill_in 'Street Address', with: '1234 Main Street'
-    fill_in 'City', with: 'Cambridge'
-    fill_in 'State', with: 'MA'
-    fill_in 'Zip Code', with: '02139'
-    fill_in 'About', with: 'I am nice.'
+    fill_in 'First Name', with: user.first_name
+    fill_in 'Last Name', with: user.last_name
+    fill_in 'Email', with: user.email
+    fill_in 'user[password]', with: user.password
+    fill_in 'user[password_confirmation]', with: 'password'
+    fill_in 'Street Address', with: user.street_address
+    fill_in 'City', with: user.city
+    fill_in 'State', with: user.state
+    fill_in 'Zip Code', with: user.zip_code
+    fill_in 'About', with: user.about
     # fill_in 'Profile Photo', with:
-    click_on 'Sign up'
+    click_button 'Sign up'
 
     expect(page).to have_content('You have signed up successfully')
-    expect(page).to have_content('Sign Out')
-    expect(page).to_not have_content('Sign In')
-
+    expect(page).to have_content('Sign out')
+    expect(page).to_not have_content('Sign in')
   end
 
-  scenario 'user password confirmation does not match password'
+  scenario 'user password confirmation does not match password' do
+    user = FactoryGirl.build(:user)
+    visit root_path
+    click_link 'Sign up'
 
-  scenario 'user does not supply required information'
+    fill_in 'First Name', with: user.first_name
+    fill_in 'Last Name', with: user.last_name
+    fill_in 'Email', with: user.email
+    fill_in 'user[password]', with: user.password
+    fill_in 'user[password_confirmation]', with: 'drowssap'
+    fill_in 'Street Address', with: user.street_address
+    fill_in 'City', with: user.city
+    fill_in 'State', with: user.state
+    fill_in 'Zip Code', with: user.zip_code
+    fill_in 'About', with: user.about
+    # fill_in 'Profile Photo', with:
+    click_button 'Sign up'
 
-  scenario 'user signs up with profile photo'
+    expect(page).to have_content("doesn't match")
+    expect(page).to_not have_content('Sign out')
+    expect(page).to have_content('Sign in')
+  end
+
+  scenario 'user does not supply required information' do
+    user = FactoryGirl.build(:user)
+    visit root_path
+    click_link 'Sign up'
+
+    click_button 'Sign up'
+
+    expect(page).to have_content("can't be blank")
+    expect(page).to_not have_content('Sign out')
+    expect(page).to have_content('Sign in')
+  end
+
+  # scenario 'user signs up with profile photo'
 
 end
