@@ -13,7 +13,6 @@
       <li id="title">WeatherBloc</li>
       <div class="list">
         <%- if user_signed_in? -%>
-          <li><%= link_to 'Add a Gem', new_ruby_gem_path %></li>
           <li> ■■■ </li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>

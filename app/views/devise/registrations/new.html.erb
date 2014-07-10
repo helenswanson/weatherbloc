@@ -5,13 +5,14 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true %>
-    <%= f.input :password_confirmation, required: true, label: 'Password Confirmation' %>
+    <%= f.input :password, required: true, label_html: { class: 'password' } %>
+    <%= f.input :password_confirmation, required: true, label: 'Password Confirmation', label_html: { class: 'password-confirmation' } %>
     <br/><br/>
     <%= f.input :first_name, required: true, label: 'First Name' %>
     <%= f.input :last_name, required: true, label: 'Last Name' %>
     <%= f.input :street_address, required: true, label: 'Street Address' %>
     <%= f.input :city, required: true %>
+    <%= f.input :state, required: true %>
     <%= f.input :zip_code, required: true, label: 'Zip Code' %>
     <%= f.input :about %>
     <%= f.input :profile_photo, label: 'Profile Photo' %><br/>

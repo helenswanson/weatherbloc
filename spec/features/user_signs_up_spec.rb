@@ -25,17 +25,22 @@ feature 'user signs up', %Q(
     fill_in 'First Name', with: 'John'
     fill_in 'Last Name', with: 'Smith'
     fill_in 'Email', with: 'user@example.com'
-    find('.js-password').set 'password'
-    find('.js-password-confirmation').set 'password'
+    fill_in 'user[password]', with: 'password'
+    fill_in 'user[password_confirmation]', with: 'password'
+    # find('.password').set 'password'
+    # find('.password-confirmation').set 'password'
 
     fill_in 'Street Address', with: '1234 Main Street'
     fill_in 'City', with: 'Cambridge'
+    fill_in 'State', with: 'MA'
     fill_in 'Zip Code', with: '02139'
     fill_in 'About', with: 'I am nice.'
     # fill_in 'Profile Photo', with:
+    click_on 'Sign up'
 
-    expect(page).to have_content("You're in!")
+    expect(page).to have_content('You have signed up successfully')
     expect(page).to have_content('Sign Out')
+    expect(page).to_not have_content('Sign In')
 
   end
 
