@@ -7,11 +7,10 @@ feature 'user signs up', %Q(
 ) do
 
 # Acceptance Criteria:
-# - I must specify a valid email address.
-# - I must specify a password, and confirm that password.
-# - ---- other devise related stuff
-# - I need to provide first name, last name, street address, city, state, and zip code.
-# - I need to have the option to add an about section.
+# + I must specify a valid email address.
+# + I must specify a password, and confirm that password.
+# + I need to provide first name, last name, street address, city, state, and zip code.
+# + I need to have the option to add an about section.
 # - TODO I need to have the option to add a profile photo.
 # - I need to see a success message if sign up is successful.
 # - I need to see an error message if sign up is unsuccessful.
@@ -26,8 +25,8 @@ feature 'user signs up', %Q(
     fill_in 'First Name', with: 'John'
     fill_in 'Last Name', with: 'Smith'
     fill_in 'Email', with: 'user@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
+    find('.js-password').set 'password'
+    find('.js-password-confirmation').set 'password'
 
     fill_in 'Street Address', with: '1234 Main Street'
     fill_in 'City', with: 'Cambridge'
