@@ -42,7 +42,7 @@ feature 'user signs up', %Q(
       fill_in 'user[password_confirmation]', with: 'password'
       click_button 'Sign up'
 
-      expect(page).to have_content('You have signed up successfully')
+      expect(page).to have_content('signed up successfully')
       expect(page).to have_content('Sign out')
       expect(page).to_not have_content('Sign up')
       expect(page).to_not have_content('Sign in')
