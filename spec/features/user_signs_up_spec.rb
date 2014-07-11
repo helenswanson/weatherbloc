@@ -11,7 +11,7 @@ feature 'user signs up', %Q(
 # + I must specify a password, and confirm that password.
 # + I need to provide first name, last name, street address, city, state, and zip code.
 # + I need to have the option to add an about section.
-# - TODO I need to have the option to add a profile photo.
+# + I need to have the option to add a profile photo.
 # + I need to see a success message if sign up is successful.
 # + I need to see an error message if sign up is unsuccessful.
 # - TODO I need to receive an email confirming my new account.
