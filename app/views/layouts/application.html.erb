@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
   <title>WeatherBloc</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,25 +13,36 @@
 </head>
 <body>
 
-  <div class="nav-bar">
-    <ul class="nav">
-      <li id="title">WeatherBloc</li>
-      <div class="list">
-        <%- if user_signed_in? -%>
-          <li> ■■■ </li>
-          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
-          <li> ■■■ </li>
-          <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <%- end -%>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">WeatherBloc</a>
       </div>
-    </ul>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <%- if user_signed_in? -%>
+            <li><%= link_to 'Host a new event', new_event_path %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <%- else -%>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+          <%- end -%>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
   </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= yield %>
+  <div class="container" id="main-container">
+    <%= notice %>
+    <%= alert %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

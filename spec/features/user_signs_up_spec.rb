@@ -43,6 +43,7 @@ feature 'user signs up', %Q(
       click_button 'Sign up'
 
       expect(page).to have_content('signed up successfully')
+      expect(page).to have_content('Host a new event')
       expect(page).to have_content('Sign out')
       expect(page).to_not have_content('Sign up')
       expect(page).to_not have_content('Sign in')
@@ -53,6 +54,7 @@ feature 'user signs up', %Q(
       click_button 'Sign up'
 
       expect(page).to have_content("doesn't match")
+      expect(page).to_not have_content('Host a new event')
       expect(page).to_not have_content('Sign out')
       expect(page).to have_content('Sign up')
     end
@@ -62,6 +64,7 @@ feature 'user signs up', %Q(
     click_button 'Sign up'
 
     expect(page).to have_content("can't be blank")
+    expect(page).to_not have_content('Host a new event')
     expect(page).to_not have_content('Sign out')
     expect(page).to have_content('Sign up')
   end

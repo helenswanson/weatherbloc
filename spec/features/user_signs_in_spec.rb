@@ -7,10 +7,10 @@ So that I can access extra features
 ) do
 
 # Acceptance Criteria:
-# - I need to provide correct email and password.
-# - I need to click a link to sign in.
-# - I need to see a success message if sign in is successful.
-# - I need to see an error message if sign in is unsuccessful.
+# + I need to provide correct email and password.
+# + I need to see a success message if sign in is successful.
+# + I need to see an error message if sign in is unsuccessful.
+# + If I am signed in, I can't sign in again.
 
   before :each do
     @user = FactoryGirl.create(:user)
@@ -28,6 +28,7 @@ So that I can access extra features
       click_button 'Sign in'
 
       expect(page).to have_content('Signed in successfully')
+      expect(page).to have_content('Host a new event')
       expect(page).to have_content('Sign out')
       expect(page).to_not have_content('Sign in')
     end
@@ -38,6 +39,7 @@ So that I can access extra features
       click_button 'Sign in'
 
       expect(page).to have_content("Invalid email or password")
+      expect(page).to_not have_content('Host a new event')
       expect(page).to_not have_content('Sign out')
       expect(page).to have_content('Sign in')
     end
@@ -47,6 +49,7 @@ So that I can access extra features
     click_button 'Sign in'
 
     expect(page).to have_content("Invalid email or password")
+    expect(page).to_not have_content('Host a new event')
     expect(page).to_not have_content('Sign out')
     expect(page).to have_content('Sign in')
   end
