@@ -6,9 +6,10 @@ body {
   padding-right: 50px;
 }
 
-.warnings {
-
+#main-container {
+  margin-top: 51px;
 }
+
 
 /*========Navigation==================*/
 

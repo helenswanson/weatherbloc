@@ -12,12 +12,11 @@
  *
  *= require_tree .
  *= require_self
- *
- How to overwrite the bootstrap default:
- $navbar-default-bg: #312312;
- $light-orange: #ff8c00;
- $navbar-default-color: $light-orange;*/
-
+ * How to overwrite the bootstrap default:
+ * $navbar-default-bg: #312312;
+ * $light-orange: #ff8c00;
+ * $navbar-default-color: $light-orange;
+ */
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
