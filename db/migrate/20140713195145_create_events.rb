@@ -4,6 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string  :title,           null: false
       t.string  :category1,       null: false
       t.string  :category2
+      t.string  :category3
       t.string  :description,     null: false
       t.integer :available_seats, null: false
       t.time    :start_time,      null: false
