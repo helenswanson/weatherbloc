@@ -1,6 +1,9 @@
 <h2>Sign up</h2>
+<p>* Required information</p><br/>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

@@ -12,4 +12,26 @@ FactoryGirl.define do
     about 'I am nice.'
     profile_photo { File.open(File.join(Rails.root, '/spec/support/example.jpg')) }
   end
+
+  factory :event do
+    sequence(:title) { |n| "Event #{n}" }
+    description 'This is an event.'
+    available_seats 3
+    start_time Time.now
+    end_time Time.now + (60 * 60 * 2)
+
+    # categorization
+  end
+
+  factory :category do
+    # sequence(:name) { |n| "Category #{n}" }
+    name "Movies"
+  end
+
+  factory :categorization do
+    event
+    category
+  end
+
+  # check_box event.categorization.category.name
 end

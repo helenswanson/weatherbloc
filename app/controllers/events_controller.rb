@@ -4,6 +4,10 @@ class EventsController < ApplicationController
   def index
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
   end
@@ -12,13 +16,19 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
+      params[:event][:category_ids].each do |category_id|
+        if category_id != ""
+          category = Category.find(category_id)
+          Categorization.create(event: @event, category: category)
+        end
+      end
       flash[:notice] = 'Success! Your event is live.'
+      redirect_to @event
     else
       flash.now[:notice] = 'Error. Please try again.'
       render :new
     end
   end
-
 
   private
   def event_params

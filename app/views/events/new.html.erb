@@ -1,71 +1,27 @@
 <h1>Host a new event</h1>
 <p>* Required information</p><br/>
 
-<form role="form">
-  <div class="form-group">
-    <label for="event-title">Title *</label>
-    <input type="text" class="form-control" id="event-title" name="title" placeholder="Enter title" required autofocus>
-    <p class="help-block">(e.g. "Firefly Marathon!", "Board Game Night", "Pizza Party")</p>
+<%= simple_form_for(@event, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.association :categories, :as => :check_boxes, label_method: :name, required: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :available_seats, required: true, label: 'Available Seats' %>
+    <%= f.input :start_time, required: true, label: 'Start Time' %>
+    <%= f.input :end_time, required: true, label: 'End Time' %>
   </div>
 
-  <div class="form-group">
-    <label for="event-category1">Category #1 *</label>
-    <select class="col-sm-3 control-label" id="event-category1" name="category1" required>
-      <option selected value="">Choose one</option>
-      <option value="Food">Food</option>
-      <option value="Games">Games</option>
-      <option value="Movies/TV">Movies/TV</option>
-      <option value="Music">Music</option>
-      <option value="Other">Other</option>
-    </select>
+  <div class="form-actions">
+    <%= f.button :submit, "Start hosting your event" %>
   </div>
+<% end %><br/><br/>
 
-  <div class="form-group">
-    <label for="event-category2">Category #2</label>
-    <select class="col-sm-3 control-label" id="event-category2" name="category2">
-      <option selected value="">Choose one</option>
-      <option value="Food">Food</option>
-      <option value="Games">Games</option>
-      <option value="Movies/TV">Movies/TV</option>
-      <option value="Music">Music</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="event-category3">Category #3</label>
-    <select class="col-sm-3 control-label" id="event-category3" name="category3">
-      <option selected value="">Choose one</option>
-      <option value="Food">Food</option>
-      <option value="Games">Games</option>
-      <option value="Movies/TV">Movies/TV</option>
-      <option value="Music">Music</option>
-      <option value="Other">Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="event-description">Description *</label>
-    <input type="textarea" class="form-control" id="event-description" name="description" placeholder="Enter description" required>
-    <p class="help-block">(e.g. "Let's order pizza and watch the Patriots game at my place.)</p>
-  </div>
-
-  <div class="form-group">
-    <label for="event-available_seats">Available seats *</label>
-    <input type="number" class="col-sm-3 control-label" id="event-available_seats" name="available_seats" min="3" max="15" step="1" value="3" required>
-  </div>
-
-  <div class="form-group">
-    <label for="event-start_time">Start Time *</label>
-    <input type="time" class="col-sm-3 control-label" id="event-start_time" name="start_time" required>
-  </div>
-  <div class="clearfix"></div>
-
-  <div class="form-group">
-    <label for="event-end_time">End Time *</label>
-    <input type="time" class="col-sm-3 control-label" id="event-end_time" name="end_time" required>
-  </div>
-  <div class="clearfix"></div><br/>
-
-  <button type="submit" class="btn btn-default">Host a New Event</button>
-</form><br/>

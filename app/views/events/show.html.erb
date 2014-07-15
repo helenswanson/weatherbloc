@@ -1,0 +1,13 @@
+<h1><%= @event.title %></h1>
+
+<div>
+  Categories:
+  <%= @categories%>
+</div>
+
+<div>
+  Description: <%= event.description %><br/>
+  Available Seats: <%= event.available_seats %><br/>
+  Start Time: <%= event.start_time.hour %>:<%= event.start_time.min %><br/>
+  End Time: <%= event.end_time.hour %>:<%= event.end_time.min %><br/>
+</div>
