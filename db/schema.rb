@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20140714195827) do
     t.string   "title",           null: false
     t.text     "description",     null: false
     t.integer  "available_seats", null: false
-    t.time     "start_time",      null: false
-    t.time     "end_time",        null: false
+    t.datetime "start_time",      null: false
+    t.datetime "end_time",        null: false
     t.integer  "host_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"

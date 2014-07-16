@@ -14,6 +14,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.host = current_user
 
     if @event.save
       params[:event][:category_ids].each do |category_id|
@@ -32,7 +33,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:title, :category1, :category2, :category3,
+    params.require(:event).permit(:title,
       :description, :available_seats, :start_time, :end_time)
   end
 end

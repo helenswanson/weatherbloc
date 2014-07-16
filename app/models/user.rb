@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :state, presence: true
   validates :zip_code, presence: true
 
-  has_many :hosts
+  has_many :events
   has_many :attendees
   has_many :reviews
 end
