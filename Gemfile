@@ -12,10 +12,13 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
+
 gem 'devise'
 gem 'kaminari'
 gem 'simple_form'
-gem 'rails_12factor'
 gem 'carrierwave'
 gem 'fog'
 gem 'carmen-rails'
