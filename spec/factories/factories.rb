@@ -20,6 +20,7 @@ FactoryGirl.define do
     start_time Time.now
     end_time Time.now + (60 * 60 * 2)
 
+    association :host, factory: :user
     # categorization
   end
 
