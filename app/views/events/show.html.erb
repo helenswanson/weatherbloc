@@ -1,4 +1,8 @@
 <h1><%= @event.title %></h1>
+Created by <%= @event.host.first_name %>
+<% if @event.host = current_user %>
+    (<%= link_to 'Edit event', edit_event_path(@event) %>)
+<% end %><br/><br/>
 
 <div>
   Categories:
@@ -14,6 +18,31 @@
   Available Seats: <%= @event.available_seats %><br/>
   Start Time: <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
   End Time: <%= @event.end_time.hour %>:<%= @event.end_time.min %><br/>
+</div><br/>
+
+<div>
+  <% if @event.host != current_user %>
+    <% if current_user.is_attending?(@event) %>
+
+      <% if @event.attendees.count >= 3 %>
+        Event Location:<br/>
+        <%= @event.street_address %><br/>
+        <%= @event.city %><br/>
+        <%= @event.zip_code %><br/><br/>
+      <% end %>
+
+      <%= button_to 'Withdraw RSVP', event_attendees_path(@event) %>
+    <% else %>
+      <%= button_to 'RSVP', event_attendees_path(@event) %>
+    <% end %>
+
+  <% end %>
+</div><br/>
+
+<div>
+  <%= link_to 'Back to events list', events_path %>
 </div>
 
-<
+
+
+

@@ -7,13 +7,13 @@ feature 'user adds a new event', %Q(
 ) do
 
 # Acceptance Criteria:
-# - I need to be signed in to do this.
-# - I need to provide the title, description, available seats, start time, end time.
-# - I need to choose at least one type from checkbox menu.
-# - I need to choose a time after the current time.
-# -
-# - I need to see a success message if my event creation is successful.
-# - I need to see an error message if my event creation is unsuccessful.
+# + I need to be signed in to do this.
+# + I need to provide the title, description, available seats, start time, end time.
+# + I need to choose at least one type from checkbox menu.
+# + I need to choose a time after the current time.
+# + I need to see a success message if my event creation is successful.
+# + I need to see an error message if my event creation is unsuccessful.
+# - TODO logic scenarios for time (same day only, end time after start time)
 
   context 'authenticated user' do
     before :each do

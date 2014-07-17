@@ -21,12 +21,10 @@ FactoryGirl.define do
     end_time Time.now + (60 * 60 * 2)
 
     association :host, factory: :user
-    # categorization
   end
 
   factory :category do
-    # sequence(:name) { |n| "Category #{n}" }
-    name "Movies"
+    name 'Movies'
   end
 
   factory :categorization do

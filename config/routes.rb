@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'events#index'
+  resources :users, only: [:show, :edit, :update, :destroy]
+
+  root 'welcomes#index'
+  resources :welcomes, only: :index
 
   resources :events do
     resources :categories, only: [:show, :new, :create]
+    resources :attendees, only: [:create, :destroy]
   end
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
