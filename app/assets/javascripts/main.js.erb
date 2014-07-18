@@ -13,14 +13,14 @@ $(document).ready(function() {
      //console.log(data);
      // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
       console.log(data.currently.precipIntensity);
-      var precipitationIntensity = data.currently.precipIntensity;
-      // var HelenIsAwesome = 2
+      var waterFall = data.currently.precipIntensity;
+      // var waterFall = 2
 
      // Determine which classes we add to our body
-      if ( HelenIsAwesome >= 0.039 ) {
-        $('body').addClass('open weather-sucks precip-' + HelenIsAwesome);
+      if ( waterFall >= 0.039 ) {
+        $('body').addClass('open weather-sucks precip-' + waterFall);
       } else {
-        $('body').addClass('open weather-rocks precip-' + HelenIsAwesome);
+        $('body').addClass('open weather-rocks precip-' + waterFall);
       }
 
     });
