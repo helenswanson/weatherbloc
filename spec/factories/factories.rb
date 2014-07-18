@@ -18,7 +18,7 @@ FactoryGirl.define do
     description 'This is an event.'
     available_seats 3
     start_time Time.now
-    end_time Time.now + (60 * 60 * 2)
+    end_time Time.now + (60 * 60 * 2 * 4)
 
     association :host, factory: :user
   end

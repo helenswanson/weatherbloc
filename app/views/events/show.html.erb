@@ -1,6 +1,6 @@
 <h1><%= @event.title %></h1>
-Created by <%= @event.host.first_name %>
-<% if @event.host = current_user %>
+Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
+<% if @event.host == current_user %>
     (<%= link_to 'Edit event', edit_event_path(@event) %>)
 <% end %><br/><br/>
 
@@ -23,19 +23,16 @@ Created by <%= @event.host.first_name %>
 <div>
   <% if @event.host != current_user %>
     <% if current_user.is_attending?(@event) %>
-
       <% if @event.attendees.count >= 3 %>
         Event Location:<br/>
         <%= @event.street_address %><br/>
         <%= @event.city %><br/>
         <%= @event.zip_code %><br/><br/>
       <% end %>
-
-      <%= button_to 'Withdraw RSVP', event_attendees_path(@event) %>
+      <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
     <% else %>
-      <%= button_to 'RSVP', event_attendees_path(@event) %>
+      <%= button_to 'RSVP', event_attendees_path(@event), id: 'rsvp-button' %>
     <% end %>
-
   <% end %>
 </div><br/>
 

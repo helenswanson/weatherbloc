@@ -22,11 +22,11 @@ feature 'user creates own RSVP to an event', %Q(
   scenario 'authenticated non-host RSVPs' do
     @event = FactoryGirl.create(:event)
     visit event_path(@event)
-
     click_button 'RSVP'
+    save_and_open_page
     expect(page).to have_content("Success! You have RSVP'd.")
     expect(page).to_not have_content('Error')
-    expect(page).to_not have_button('RSVP')
+    expect(page).to_not have_css('#rsvp-button')
     expect(page).to have_button('Withdraw RSVP')
   end
 

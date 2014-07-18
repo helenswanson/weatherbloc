@@ -17,11 +17,15 @@ class User < ActiveRecord::Base
 
   def is_attending?(event)
     #return true if user is an attendee
-    @attendee = Attendee.where(user: self, event: event).first
-    if @attendee
+    attendee = Attendee.where(user: self, event: event).first
+    if attendee
       true
     else
       false
     end
+  end
+
+  def attendee_for(event)
+    Attendee.where(user: self, event: event).first
   end
 end
