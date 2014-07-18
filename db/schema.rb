@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20140717181044) do
     t.datetime "updated_at"
   end
 
+  add_index "attendees", ["user_id", "event_id"], name: "index_attendees_on_user_id_and_event_id", unique: true, using: :btree
+
   create_table "categories", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
