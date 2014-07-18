@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
   has_many :events, foreign_key: 'host_id'
   has_many :attendees
   has_many :reviews
+
+  def is_attending?(event)
+    #return true if user is an attendee
+    @attendee = Attendee.where(user: self, event: event).first
+    if @attendee
+      true
+    else
+      false
+    end
+  end
 end

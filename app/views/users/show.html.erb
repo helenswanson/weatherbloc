@@ -1,0 +1,26 @@
+<h1><%= @user.first_name %>'s Profile</h1>
+<div>
+  <% if @user == current_user %>
+      (<%= link_to 'Edit profile', edit_user_path(@user) %>)<br/><br/>
+      <strong>Personal Info</strong> (seen by only you)<br/><br/>
+      Full Name: <%= @user.first_name %> <%= @user.last_name %><br/>
+      Street Address: <%= @user.street_address %><br/>
+      City: <%= @user.city %><br/>
+      State: <%= @user.state %><br/>
+      Zip Code: <%= @user.zip_code %><br/><br/>
+      <br/>
+      <strong>Profile Info</strong> (seen by everyone):<br/><br/>
+  <% end %><br/><br/>
+</div>
+
+<div>
+  <h3>Profile Photo:</h3><br/>
+  <img src="<%= @user.profile_photo %>"><br/><br/>
+
+  <h3>About:</h3><br/>
+  <%= @user.about %><br/>
+</div>
+
+<div>
+  <h3>Events hosted:</h3><br/><br/>
+</div><br/><br/>
