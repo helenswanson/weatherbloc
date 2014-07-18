@@ -13,15 +13,10 @@ So that I can protect my personal information
 # + If I am signed out, I can't sign out again.
 
   scenario 'user clicks sign out link' do
-    user = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign in'
+    @user = FactoryGirl.create(:user)
+    login(@user)
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign in'
     click_link 'Sign out'
-
 
     expect(page).to have_content('Signed out successfully')
     expect(page).to_not have_content('Host a new event')
