@@ -1,30 +1,30 @@
 $(document).ready(function() {
 
-$("#submit-button").on('click', function() {
-  event.preventDefault();
+  $("#submit-button").on('click', function() {
+    event.preventDefault();
 
-  var apiKey = 46c6aa3860082a85460cd83e6356b00c;
-  var url = 'https://api.forecast.io/forecast/';
-  var latitude = 42.35168;  //Launch: 42.35168
-  var longitude = -71.061431; //Launch: -71.061431
-  var data;
+    var apiKey = '46c6aa3860082a85460cd83e6356b00c';
+    var url = 'https://api.forecast.io/forecast/';
+    var latitude = 42.35168;  //Launch: 42.35168
+    var longitude = -71.061431; //Launch: -71.061431
+    var data;
 
-  $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
-   //console.log(data);
-   // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
-    console.log(data.currently.precipIntensity);
-    var precipitationIntensity = data.currently.precipIntensity;
-    // var HelenIsAwesome = 2
+    $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+     //console.log(data);
+     // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
+      console.log(data.currently.precipIntensity);
+      var precipitationIntensity = data.currently.precipIntensity;
+      // var HelenIsAwesome = 2
 
-   // Determine which classes we add to our body
-    if ( HelenIsAwesome >= 0.039 ) {
-      $('body').addClass('open weather-sucks precip-' + HelenIsAwesome);
-    } else {
-      $('body').addClass('open weather-rocks precip-' + HelenIsAwesome);
-    }
+     // Determine which classes we add to our body
+      if ( HelenIsAwesome >= 0.039 ) {
+        $('body').addClass('open weather-sucks precip-' + HelenIsAwesome);
+      } else {
+        $('body').addClass('open weather-rocks precip-' + HelenIsAwesome);
+      }
+
+    });
 
   });
-
-});
 
 });
