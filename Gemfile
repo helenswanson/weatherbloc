@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'fog'
 gem 'carmen-rails'
+gem 'geocoder'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'

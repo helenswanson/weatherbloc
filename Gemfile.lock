@@ -102,6 +102,7 @@ GEM
     fog-json (1.0.0)
       multi_json (~> 1.0)
     formatador (0.2.5)
+    geocoder (1.2.3)
     hike (1.2.3)
     i18n (0.6.11)
     inflecto (0.0.2)
@@ -242,6 +243,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   fog
+  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
