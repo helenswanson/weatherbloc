@@ -10,16 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
- * How to overwrite the bootstrap default:
- * $navbar-default-bg: #312312;
- * $light-orange: #ff8c00;
- * $navbar-default-color: $light-orange;
+ *= require_tree .
  */
-
-@import "bootstrap";
-@import "bootstrap-sprockets";
-@import 'bootstrap-custom';
-@import "bootstrap-compass";
-@import "bootstrap/theme";

@@ -1,1 +1,8 @@
 <h1>Welcome to WeatherBloc!</h1>
+
+<%= form_tag events_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search], id: 'search_field', placeholder: 'Type your address' %>
+    <%= submit_tag "Search your area", id: 'submit-button', class: 'btn btn-default' %>
+  </p>
+<% end %>

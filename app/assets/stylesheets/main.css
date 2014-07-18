@@ -1,86 +1,73 @@
 body {
-  font-family: 'Helvetica', 'san-serif';
+  font-family: 'Helvetica Neue', 'san-serif';
   font-size: 14px;
-  /*background: #EFDBC5;*/
+  background-color: #4fc3f7;
   padding-left: 50px;
   padding-right: 50px;
 }
 
 #main-container {
   margin-top: 51px;
+  position: relative;
+  z-index: 1000;
 }
 
+.weather-sucks {
 
-/*========Navigation==================*/
-
-.nav {
-  padding: 0;
-  margin: 0;
 }
 
-.nav li {
-  display: inline-block;
-  list-style: none;
+.weather-rocks {
+
 }
 
-.nav-bar {
-  /*background: #FF496C;*/
-  font-size: 16px;
-  padding-top: 6px;
-  padding-left: 6px;
-  padding-right: 6px;
-}
-
-.nav > li > a {
+.title, .button {
+  z-index: 3;
+  position: relative;
   display: block;
-  padding: 4px;
-  color: #000000;
-  text-decoration: none;
 }
 
-#title {
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.list {
-  float: right;
-  font-size: 14px;
-}
-
-/*========Simple Form==================*/
-
-.simple_form div.input {
-  margin-bottom: 10px;
-  clear: both; /* Required for Webkit, but not for Gecko */
-}
-
-.simple_form label {
-  float: left;
-  width: 110px;
-  text-align: right;
-  margin: 2px 10px;
-}
-
-div.boolean, .simple_form input[type='submit'] {
-  margin-left: 90px;
-}
-
-.field_with_errors {
-  background-color: #ff3333;
-}
-
-.simple_form .error {
-  clear: left;
-  color: black;
+.search-form {
+  z-index: 3;
+  position: relative;
   display: block;
-  margin-left: 120px;
 }
 
-.simple_form .hint {
-  clear: left;
-  margin-left: 120px;
-  color: #555;
-  display: block;
-  font-style: italic;
+.curtain-down {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: 500ms ease;
+    transition: transform 500ms ease;
+}
+
+.curtain-up {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-transition: 500ms ease;
+    transition: transform 500ms ease;
+}
+
+.open .curtain-down, .open .curtain-up {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.weather-sucks .curtain-down {
+    color: #eceff1;
+    background-color: #263238;
+}
+
+.weather-rocks .curtain-up {
+    background-color: #fff176;
 }
