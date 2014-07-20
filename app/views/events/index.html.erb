@@ -1,1 +1,9 @@
-<h1>Events Show Page!</h1>
+<h1>Events in Your Area!</h1>
+
+<div>
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= link_to event.title, event_path(event) %></li>
+    <% end %>
+  </ul>
+</div>

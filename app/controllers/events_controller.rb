@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @events = Event.all
+
+    # get all events
+    # ...posted today
+    # ...near the current user
   end
 
   def show
