@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'welcomes#index'
   resources :welcomes, only: :index
+  get 'about' => 'welcomes#about'
+  get 'faqs' => 'welcomes#faqs'
 
   resources :events do
     resources :categories, only: [:show, :new, :create]
