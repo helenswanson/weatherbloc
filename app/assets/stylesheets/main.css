@@ -71,3 +71,13 @@ body {
 .weather-rocks .curtain-up {
     background-color: #fff176;
 }
+
+.form-horizontal .control-label {
+  width: 75%;
+  float: left;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
