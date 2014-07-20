@@ -28,4 +28,12 @@ class User < ActiveRecord::Base
   def attendee_for(event)
     Attendee.where(user: self, event: event).first
   end
+
+  geocoded_by :full_address
+  # the callback to set longitude and latitude
+  after_validation :geocode
+
+  def full_address
+    "#{street_address}, #{city}, #{state}, #{zip_code}"
+  end
 end
