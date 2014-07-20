@@ -34,6 +34,6 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   def full_address
-    "#{street_address}, #{city}, #{state}, #{zip_code}"
+    [street_address, city, state, zip_code].compact.join(', ')
   end
 end
