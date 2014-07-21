@@ -14,7 +14,14 @@ class EventsController < ApplicationController
       @events = Event.where("host_id IN (?)", user_ids)
     else
       if params[:search].present?
-        @events = Event.near(params[:search], 0.25)
+        users = User.near([params[:search], 0.25])
+        user_ids = []
+        users.each do |user|
+          unless user.id.nil?
+            user_ids << user.id
+          end
+        end
+        @events = Event.where("host_id IN (?)", user_ids)
       else
         @events = Event.all
       end

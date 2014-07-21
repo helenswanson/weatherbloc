@@ -1,0 +1,23 @@
+<h1>Edit Your Event</h1>
+<p>* Required information</p><br/>
+
+<%= simple_form_for(@event, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+  }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.association :categories, :as => :check_boxes, label_method: :name, required: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :available_seats, required: true, label: 'Available Seats' %>
+    <%= f.input :start_time, required: true, label: 'Start Time' %>
+    <%= f.input :end_time, required: true, label: 'End Time' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Save event edits" %>
+  </div>
+<% end %><br/><br/>
