@@ -1,16 +1,24 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user! #, except: [:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
-    @user = current_user
-    users = User.near([@user.latitude, @user.longitude], 0.25)
-    user_ids = []
-    users.each do |user|
-      unless user.id.nil?
-        user_ids << user.id
+    if current_user
+      @user = current_user
+      users = User.near([@user.latitude, @user.longitude], 0.25)
+      user_ids = []
+      users.each do |user|
+        unless user.id.nil?
+          user_ids << user.id
+        end
+      end
+      @events = Event.where("host_id IN (?)", user_ids)
+    else
+      if params[:search].present?
+        @events = Event.near(params[:search], 0.25)
+      else
+        @events = Event.all
       end
     end
-    @events = Event.where("host_id IN (?)", user_ids)
   end
 
   def show
