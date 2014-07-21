@@ -1,6 +1,14 @@
-<h1>Events in Your Area!</h1>
+<%- if user_signed_in? -%>
+  <% content_for :body_class, "signed-in" %>
+  <input type="hidden" value="<%= @user.latitude %>" id="latitude" style="display: none">
+  <input type="hidden" value="<%= @user.longitude %>" id="longitude" style="display: none">
+<%- else -%>
+  <% content_for :body_class, "signed-out" %>
+<%- end -%>
 
-<div>
+<h1 class="appear delay-1">Events in Your Area!</h1>
+
+<div class="appear delay-2">
   <ul>
     <% @events.each do |event| %>
       <li><%= link_to event.title, event_path(event) %></li>

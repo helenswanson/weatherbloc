@@ -54,7 +54,7 @@ body {
     z-index: 2;
     -webkit-transform: translateY(100%);
     transform: translateY(100%);
-    -webkit-transition: 500ms ease;
+    -webkit-transition: -webkit-transform 500ms ease;
     transition: transform 500ms ease;
 }
 
@@ -81,3 +81,24 @@ body {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+body:not(.loaded) .appear {
+  opacity: 0;
+}
+
+.loaded .appear {
+  opacity: 1;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+
+.loaded .appear.delay-1 {
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+}
+
+.loaded .appear.delay-2 {
+  -webkit-transition-delay: 1.5s;
+  transition-delay: 1.5s;
+}
+

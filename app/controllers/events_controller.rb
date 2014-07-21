@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user! #, except: [:index]
 
   def index
-    user = current_user
-    users = User.near([user.latitude, user.longitude], 0.25)
+    @user = current_user
+    users = User.near([@user.latitude, @user.longitude], 0.25)
     user_ids = []
     users.each do |user|
       unless user.id.nil?
@@ -41,9 +41,32 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+    authorize_to_edit
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    authorize_to_edit
+    if @event.update(event_params)
+      flash[:notice] = 'Success'
+      redirect_to event_path(@event)
+    else
+      flash.now[:notice] = 'Error'
+      render :edit
+    end
+  end
+
   private
   def event_params
     params.require(:event).permit(:title, :description,
       :available_seats, :start_time, :end_time)
+  end
+
+  def authorize_to_edit
+    if current_user != @event.host
+      flash[:notice] = 'You are not authorized to do that.'
+    end
   end
 end
