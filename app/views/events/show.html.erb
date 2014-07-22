@@ -1,45 +1,44 @@
+<% content_for :body_class, "signed-in" %>
+
 <h1><%= @event.title %></h1>
 Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
 <% if @event.host == current_user %>
     (<%= link_to 'Edit event', edit_event_path(@event) %>)
 <% end %><br/><br/>
-
-<div>
-  Categories:
-  <ul>
-    <% @event.categories.each do |category| %>
-      <li><%= category.name %></li>
-    <% end %>
-  </ul>
-</div>
-
-<div>
-  Description: <%= @event.description %><br/>
-  Available Seats: <%= @event.available_seats %><br/>
-  Start Time: <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
-  End Time: <%= @event.end_time.hour %>:<%= @event.end_time.min %><br/>
-</div><br/>
-
-<div>
-  <% if @event.host != current_user %>
-    <% if current_user.is_attending?(@event) %>
-      <% if @event.attendees.count >= 3 %>
-        Event Location:<br/>
-        <%= @event.street_address %><br/>
-        <%= @event.city %><br/>
-        <%= @event.zip_code %><br/><br/>
+<div class="event-details">
+  <div>
+    Categories:
+    <ul>
+      <% @event.categories.each do |category| %>
+        <li><%= category.name %></li>
       <% end %>
-      <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
-    <% else %>
-      <%= button_to 'RSVP', event_attendees_path(@event), id: 'rsvp-button' %>
+    </ul>
+  </div>
+
+  <div>
+    Description: <%= @event.description %><br/>
+    Available Seats: <%= @event.available_seats %><br/>
+    Start Time: <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
+    End Time: <%= @event.end_time.hour %>:<%= @event.end_time.min %><br/>
+  </div><br/>
+
+  <div>
+    <% if @event.host != current_user %>
+      <% if current_user.is_attending?(@event) %>
+        <% if @event.attendees.count >= 3 %>
+          Event Location:<br/>
+          <%= @event.street_address %><br/>
+          <%= @event.city %><br/>
+          <%= @event.zip_code %><br/><br/>
+        <% end %>
+        <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
+      <% else %>
+        <%= button_to 'RSVP', event_attendees_path(@event), id: 'rsvp-button' %>
+      <% end %>
     <% end %>
-  <% end %>
-</div><br/>
+  </div><br/>
+</div>
 
 <div>
   <%= link_to 'Back to events list', events_path %>
 </div>
-
-
-
-

@@ -79,6 +79,10 @@ body {
   outline: none;
 }
 
+#signed-in {
+  padding-top: 51px;
+  text-align: left;
+}
 
 .weather-sucks {
 
@@ -219,4 +223,6 @@ text-align: right;
   padding-left: 15px;
 }
 
-
+.event-details {
+  text-align: left;
+}
