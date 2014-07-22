@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def index
-    redirect_to events_path
-  end
-
   def show
     @user = User.find(params[:id])
   end

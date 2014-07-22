@@ -3,7 +3,6 @@
   <input type="hidden" value="<%= @user.latitude %>" id="latitude" style="display: none">
   <input type="hidden" value="<%= @user.longitude %>" id="longitude" style="display: none">
 
-
   <h1 class="appear delay-1">Events in Your Area!</h1>
   <div class="appear delay-2">
       <% @events.each do |event| %>
@@ -15,9 +14,7 @@
   <h1 class="appear delay-1">Events in Your Area!</h1>
   <div class="appear delay-2">
     <p>Sign in to see event details.</p><br/>
-    <ul>
       <% @events.each do |event| %>
-        <li><%= event.title %></li>
+        <%= event.title %><br/>
       <% end %>
-    </ul>
 <% end %>

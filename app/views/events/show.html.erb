@@ -7,7 +7,7 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
 <% end %><br/><br/>
 <div class="event-details">
   <div>
-    Categories:
+    <strong>Categories:</strong>
     <ul>
       <% @event.categories.each do |category| %>
         <li><%= category.name %></li>
@@ -16,10 +16,10 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
   </div>
 
   <div>
-    Description: <%= @event.description %><br/>
-    Available Seats: <%= @event.available_seats %><br/>
-    Start Time: <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
-    End Time: <%= @event.end_time.hour %>:<%= @event.end_time.min %><br/>
+    <strong>Description:</strong><br/><%= @event.description %><br/><br/>
+    <strong>Available Seats:</strong> <%= @event.available_seats %><br/><br/>
+    <strong>Start Time:</strong> <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
+    <strong>End Time:</strong> <%= @event.end_time.hour %>:<%= @event.end_time.min %><br/><br/>
   </div><br/>
 
   <div>
@@ -27,9 +27,9 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
       <% if current_user.is_attending?(@event) %>
         <% if @event.attendees.count >= 3 %>
           Event Location:<br/>
-          <%= @event.street_address %><br/>
-          <%= @event.city %><br/>
-          <%= @event.zip_code %><br/><br/>
+          <%= @event.host.street_address %><br/>
+          <%= @event.host.city %><br/>
+          <%= @event.host.zip_code %><br/><br/>
         <% end %>
         <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
       <% else %>
