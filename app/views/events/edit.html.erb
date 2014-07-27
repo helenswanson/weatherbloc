@@ -1,5 +1,6 @@
 <h1>Edit Your Event</h1>
 <p>* Required information</p><br/>
+<%= link_to "Delete Event", event_path(@event), method: :delete, data: {:confirm => "Are you sure?"} %>
 
 <%= simple_form_for(@event, html: { class: 'form-horizontal' },
   wrapper: :horizontal_form,
