@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :host, class_name: 'User'
   has_many  :attendees, dependent: :destroy
-  has_many  :reviews, dependent: :destroy
+  # has_many  :reviews, dependent: :destroy
   has_many  :categorizations, dependent: :destroy
   has_many  :categories, through: :categorizations, dependent: :destroy
 

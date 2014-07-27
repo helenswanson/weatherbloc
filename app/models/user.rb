@@ -13,7 +13,7 @@
 
   has_many :events, foreign_key: 'host_id'
   has_many :attendees
-  has_many :reviews
+  # has_many :reviews
 
   def is_attending?(event)
     #return true if user is an attendee
