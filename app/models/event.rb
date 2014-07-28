@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   has_many  :attendees, dependent: :destroy
   # has_many  :reviews, dependent: :destroy
   has_many  :categorizations, dependent: :destroy
-  has_many  :categories, through: :categorizations, dependent: :destroy
+  has_many  :categories, through: :categorizations
 
   # def self.search(search)
   #   if search
