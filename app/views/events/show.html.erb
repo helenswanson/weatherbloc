@@ -5,6 +5,7 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
 <% if @event.host == current_user %>
     (<%= link_to 'Edit event', edit_event_path(@event) %>)
 <% end %><br/><br/>
+
 <div class="event-details">
   <div>
     <strong>Categories:</strong>
@@ -37,6 +38,15 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
       <% end %>
     <% end %>
   </div><br/>
+
+  <div>
+    <strong>Current Attendees:</strong><br/>
+    <ul>
+      <% @attendees.each do |attendee| %>
+        <li><%= attendee.user.first_name %></li><br/>
+      <% end %>
+    <ul>
+  </div>
 </div>
 
 <div>
