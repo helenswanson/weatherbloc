@@ -49,14 +49,14 @@ feature 'user views a new event', %Q(
         click_button 'RSVP'
         click_link 'Sign out'
         # RSVP 2nd user
-        @user = FactoryGirl.create(:user)
-        login(@user)
+        @user2 = FactoryGirl.create(:user)
+        login(@user2)
         visit event_path(@event)
         click_button 'RSVP'
         click_link 'Sign out'
         # RSVP 3rd user
-        @user = FactoryGirl.create(:user)
-        login(@user)
+        @user3 = FactoryGirl.create(:user)
+        login(@user3)
         visit event_path(@event)
         click_button 'RSVP'
 
@@ -73,10 +73,15 @@ feature 'user views a new event', %Q(
         expect(page).to_not have_css('#rsvp-button')
         expect(page).to have_button('Withdraw RSVP')
 
+        expect(page).to have_content(@user.first_name)
+        expect(page).to have_content(@user2.first_name)
+        expect(page).to have_content(@user3.first_name)
+
         expect(page).to have_content(@event.host.street_address)
         expect(page).to have_content(@event.host.city)
         expect(page).to have_content(@event.host.state)
         expect(page).to have_content(@event.host.zip_code)
+
       end
 
     #   context 'users not associated with a >= 3 attendees event' do
