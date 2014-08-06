@@ -29,7 +29,7 @@ Created by <%= link_to @event.host.first_name, user_path(@event.host) %>
         <% if @event.attendees.count >= 3 %>
           Event Location:<br/>
           <%= @event.host.street_address %><br/>
-          <%= @event.host.city %><br/>
+          <%= @event.host.city %>, <%= @event.host.state %><br/>
           <%= @event.host.zip_code %><br/><br/>
         <% end %>
         <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>

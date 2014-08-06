@@ -25,11 +25,6 @@ feature 'user views a new event', %Q(
       visit event_path(@event)
 
       expect(page).to have_link('Edit event')
-      # expect(page).to_not have_content(@event.street_address)
-      # expect(page).to_not have_content(@event.city)
-      # expect(page).to_not have_content(@event.state)
-      # expect(page).to_not have_content(@event.zip_code)
-
       expect(page).to have_content(@event.title)
       # expect(page).to have_content(@event.categories)
       expect(page).to have_content(@event.description)
@@ -39,58 +34,72 @@ feature 'user views a new event', %Q(
       expect(page).to have_content(@event.end_time.hour)
       expect(page).to have_content(@event.end_time.min)
 
-      expect(page).to_not have_button('RSVP')
+      expect(page).to_not have_css('#rsvp-button')
       expect(page).to_not have_button('Withdraw RSVP')
     end
 
-  #   context 'authenticated non-host' do
-  #     before :each do
-  #       @user = FactoryGirl.create(:user)
-  #       login(@user)
-  #       @event = FactoryGirl.create(:event)
-  #       visit event_path(@event)
+    context 'authenticated non-host' do
+      before :each do
+        @event = FactoryGirl.create(:event)
+        visit event_path(@event)
+      end
 
-  #       expect(page).to_not have_link('Edit event')
-  #       expect(page).to have_content(@event.title)
-  #       expect(page).to have_content(@event.categories)
-  #       expect(page).to have_content(@event.description)
-  #       expect(page).to have_content(@event.available_seats)
-  #       expect(page).to have_content(@event.start_time.hour)
-  #       expect(page).to have_content(@event.start_time.min)
-  #       expect(page).to have_content(@event.end_time.hour)
-  #       expect(page).to have_content(@event.end_time.min)
-  #     end
+      scenario 'attendee views page for event with >= 3 attendees' do
+        # RSVP 1st user
+        click_button 'RSVP'
+        click_link 'Sign out'
+        # RSVP 2nd user
+        @user = FactoryGirl.create(:user)
+        login(@user)
+        visit event_path(@event)
+        click_button 'RSVP'
+        click_link 'Sign out'
+        # RSVP 3rd user
+        @user = FactoryGirl.create(:user)
+        login(@user)
+        visit event_path(@event)
+        click_button 'RSVP'
 
-  #     scenario 'attendee views page for event with >= 3 attendees' do
-  #       expect(page).to have_content(@event.street_address)
-  #       expect(page).to have_content(@event.city)
-  #       expect(page).to have_content(@event.state)
-  #       expect(page).to have_content(@event.zip_code)
+        expect(page).to_not have_link('Edit event')
+        expect(page).to have_content(@event.title)
+        # expect(page).to have_content(@event.categories)
+        expect(page).to have_content(@event.description)
+        expect(page).to have_content(@event.available_seats)
+        expect(page).to have_content(@event.start_time.hour)
+        expect(page).to have_content(@event.start_time.min)
+        expect(page).to have_content(@event.end_time.hour)
+        expect(page).to have_content(@event.end_time.min)
 
-  #       expect(page).to_not have_button('RSVP')
-  #       expect(page).to have_button('Withdraw RSVP')
-  #     end
+        expect(page).to_not have_css('#rsvp-button')
+        expect(page).to have_button('Withdraw RSVP')
 
-  #     context 'users not associated with a >= 3 attendees event' do
-  #       before :each do
-  #         expect(page).to_not have_content(@event.street_address)
-  #         expect(page).to_not have_content(@event.city)
-  #         expect(page).to_not have_content(@event.state)
-  #         expect(page).to_not have_content(@event.zip_code)
-  #       end
+        expect(page).to have_content(@event.host.street_address)
+        expect(page).to have_content(@event.host.city)
+        expect(page).to have_content(@event.host.state)
+        expect(page).to have_content(@event.host.zip_code)
+      end
 
-  #       scenario 'attendeee views page for event' do
-  #         expect(page).to_not have_button('RSVP')
-  #         expect(page).to have_button('Withdraw RSVP')
-  #       end
+    #   context 'users not associated with a >= 3 attendees event' do
+    #     before :each do
+    #       expect(page).to_not have_content(@event.host.street_address)
+    #       expect(page).to_not have_content(@event.host.city)
+    #       expect(page).to_not have_content(@event.host.state)
+    #       expect(page).to_not have_content(@event.host.zip_code)
+    #     end
 
-  #       scenario 'user without RSVP views event page' do
-  #         expect(page).to have_button('RSVP')
-  #         expect(page).to_not have_button('Withdraw RSVP')
-  #       end
-  #     end
+    #     scenario 'attendeee views page for event' do
+    #       expect(page).to_not have_button('RSVP')
+    #       expect(page).to have_button('Withdraw RSVP')
+    #     end
 
-  #   end
+    #     scenario 'user without RSVP views event page' do
+    #       expect(page).to have_button('RSVP')
+    #       expect(page).to_not have_button('Withdraw RSVP')
+    #     end
+    #   end
+
+    end
+
   end
 
   scenario 'unauthenticated user cannot see event details' do
