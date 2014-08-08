@@ -94,6 +94,7 @@ class EventsController < ApplicationController
   def authorize_to_edit
     if current_user != @event.host
       flash[:notice] = 'You are not authorized to do that.'
+      redirect_to root_path
     end
   end
 end
