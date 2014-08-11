@@ -36,6 +36,11 @@ feature 'user views a new event', %Q(
 
       expect(page).to_not have_css('#rsvp-button')
       expect(page).to_not have_button('Withdraw RSVP')
+
+      expect(page).to_not have_content(@event.host.street_address)
+      expect(page).to_not have_content(@event.host.city)
+      expect(page).to_not have_content(@event.host.state)
+      expect(page).to_not have_content(@event.host.zip_code)
     end
 
     context 'authenticated non-host' do
@@ -84,27 +89,29 @@ feature 'user views a new event', %Q(
 
       end
 
-    #   context 'users not associated with a >= 3 attendees event' do
-    #     before :each do
-    #       expect(page).to_not have_content(@event.host.street_address)
-    #       expect(page).to_not have_content(@event.host.city)
-    #       expect(page).to_not have_content(@event.host.state)
-    #       expect(page).to_not have_content(@event.host.zip_code)
-    #     end
+      context 'users not associated with a >= 3 attendees event' do
+        before :each do
+          expect(page).to_not have_content(@event.host.street_address)
+          expect(page).to_not have_content(@event.host.city)
+          expect(page).to_not have_content(@event.host.state)
+          expect(page).to_not have_content(@event.host.zip_code)
+        end
 
-    #     scenario 'attendeee views page for event' do
-    #       expect(page).to_not have_button('RSVP')
-    #       expect(page).to have_button('Withdraw RSVP')
-    #     end
+        scenario 'attendeee views page for event' do
+          click_button 'RSVP'
 
-    #     scenario 'user without RSVP views event page' do
-    #       expect(page).to have_button('RSVP')
-    #       expect(page).to_not have_button('Withdraw RSVP')
-    #     end
-    #   end
+          expect(page).to_not have_css('#rsvp-button')
+          expect(page).to have_button('Withdraw RSVP')
+          expect(page).to have_content(@user.first_name)
+        end
 
+        scenario 'user without RSVP views event page' do
+          expect(page).to have_css('#rsvp-button')
+          expect(page).to_not have_button('Withdraw RSVP')
+          expect(page).to_not have_content(@user.first_name)
+        end
+      end
     end
-
   end
 
   scenario 'unauthenticated user cannot see event details' do
@@ -112,5 +119,6 @@ feature 'user views a new event', %Q(
     visit event_path(@event)
 
     expect(page).to have_content('You need to sign in')
+
   end
 end
