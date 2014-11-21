@@ -226,3 +226,19 @@ text-align: right;
 .event-details {
   text-align: left;
 }
+
+/*=====Users show page=====*/
+
+.users-private {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.users-global {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.users-info{
+  padding-bottom: 15px;
+}
