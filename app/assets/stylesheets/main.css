@@ -24,7 +24,7 @@ body {
 
 .welcome-page {
   position: absolute;
-  height: 150px;
+  height: 175px;
   right: 0;
   left: 0;
   top: 0;
@@ -43,7 +43,6 @@ body {
   max-width: 300px;
   margin-right: auto;
   margin-left: auto;
-  border-radius: 4px;
 }
 
 .welcome-form-field {
@@ -53,11 +52,10 @@ body {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  border-radius: 4px;
 }
 
 .welcome-form-button {
-  border-radius: 4px;
+  border-radius: 0px;
   width: 100%;
   margin: 0;
   border: 0;
