@@ -5,8 +5,8 @@
       <div class="users-info" id="users-edit">
         (<%= link_to 'Edit profile', edit_user_path(@user) %>)
       </div>
-      <div class="users-info" id="users-private-label">
-        <strong>Personal Info (seen by only you):</strong>
+      <div class="users-info users-label" id="users-private-label">
+        Personal Info (seen by only you):
       </div>
       <div class="users-info" id="users-location">
         Full Name: <%= @user.first_name %> <%= @user.last_name %><br/>
@@ -20,8 +20,8 @@
 
   <div class="users-global">
     <% if @user == current_user %>
-      <div id="users-global-label">
-        <strong>Profile Info (seen by everyone):</strong>
+      <div class="users-info users-label" id="users-global-label">
+        Profile Info (seen by everyone):
       </div>
     <% end %>
 
@@ -34,7 +34,7 @@
       <%= @user.about %><br/>
     </div>
     <div class="users-info" id="users-hosted">
-      <h3>Events hosted:</h3>
+      <h3>Events hosted:</h3><br/>
     </div>
   </div>
 </div>

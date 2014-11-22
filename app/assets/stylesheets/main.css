@@ -235,10 +235,13 @@ text-align: right;
 }
 
 .users-global {
-  margin-top: 15px;
   margin-bottom: 30px;
 }
 
-.users-info{
+.users-info {
   padding-bottom: 15px;
+}
+
+.users-label {
+  font-weight: bold;
 }
