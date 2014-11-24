@@ -5,7 +5,7 @@
       <div class="users-info" id="users-edit">
         (<%= link_to 'Edit profile', edit_user_path(@user) %>)
       </div>
-      <div class="users-info users-label" id="users-private-label">
+      <div class="users-info section-label" id="users-private-label">
         Personal Info (seen by only you):
       </div>
       <div class="users-info" id="users-location">
@@ -20,7 +20,7 @@
 
   <div class="users-global">
     <% if @user == current_user %>
-      <div class="users-info users-label" id="users-global-label">
+      <div class="users-info section-label" id="users-global-label">
         Profile Info (seen by everyone):
       </div>
     <% end %>

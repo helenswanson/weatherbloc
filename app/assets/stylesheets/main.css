@@ -22,6 +22,8 @@ body {
   padding-bottom: 15px;
 }
 
+/*=====Welcome page=====*/
+
 .welcome-page {
   position: absolute;
   height: 175px;
@@ -225,6 +227,22 @@ text-align: right;
   text-align: left;
 }
 
+/*=====About page=====*/
+
+.about-details {
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.about-info {
+  padding-bottom: 15px;
+}
+
+.section-label {
+  font-weight: bold;
+}
+
 /*=====Users show page=====*/
 
 .users-private {
@@ -238,8 +256,4 @@ text-align: right;
 
 .users-info {
   padding-bottom: 15px;
-}
-
-.users-label {
-  font-weight: bold;
 }
