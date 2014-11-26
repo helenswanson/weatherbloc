@@ -247,12 +247,11 @@ text-align: right;
 
 /*=====Users show page=====*/
 
-.users-private {
+.users-details {
   margin-top: 15px;
-  margin-bottom: 30px;
 }
 
-.users-global {
+.users-group {
   margin-bottom: 30px;
 }
 
@@ -260,9 +259,21 @@ text-align: right;
   padding-bottom: 15px;
 }
 
-/*=====Event index page=====*/
+/*=====Events index page=====*/
 
 .events-list {
   margin-top: 15px;
   margin-bottom: 30px;
 }
+
+/*=====Events show page=====*/
+
+.event-details {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.event-create {
+  text-align: center;
+}
+
