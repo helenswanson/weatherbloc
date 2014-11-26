@@ -172,6 +172,8 @@ body:not(.loaded) .appear {
 .loaded .appear.delay-2 {
   -webkit-transition-delay: 1.5s;
   transition-delay: 1.5s;
+/*  margin-top: 15px;
+  margin-bottom: 30px;*/
 }
 
 @media (min-width: 768px) {
@@ -256,4 +258,11 @@ text-align: right;
 
 .users-info {
   padding-bottom: 15px;
+}
+
+/*=====Event index page=====*/
+
+.events-list {
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
