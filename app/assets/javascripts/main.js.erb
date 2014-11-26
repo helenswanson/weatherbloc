@@ -6,15 +6,11 @@ ready = function() {
 
     var apiKey = '46c6aa3860082a85460cd83e6356b00c';
     var url = 'https://api.forecast.io/forecast/';
-
     var latitude = $('').val();  //Launch: 42.35168
-
     var longitude = $('').val(); //Launch: -71.061431
-
     var data;
 
     $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
-     //console.log(data);
      // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
       console.log(data.currently.precipIntensity);
       var waterFall = data.currently.precipIntensity;
@@ -26,11 +22,8 @@ ready = function() {
       } else {
         $('body').addClass('open weather-rocks precip-' + waterFall);
       }
-
     });
-
   });
-
 };
 
 $(document).on('document:ready', ready);
@@ -40,31 +33,25 @@ load = function() {
 
   $('body').addClass('loaded');
 
-    var apiKey = '46c6aa3860082a85460cd83e6356b00c';
-    var url = 'https://api.forecast.io/forecast/';
+  var apiKey = '46c6aa3860082a85460cd83e6356b00c';
+  var url = 'https://api.forecast.io/forecast/';
+  var latitude = $('#latitude').val();  //Launch: 42.35168
+  var longitude = $('#longitude').val(); //Launch: -71.061431
+  var data;
 
-    var latitude = $('#latitude').val();  //Launch: 42.35168
+  $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
+   // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
+    console.log(data.currently.precipIntensity);
+    var waterFall = data.currently.precipIntensity;
+    // var waterFall = 2
 
-    var longitude = $('#longitude').val(); //Launch: -71.061431
-
-    var data;
-
-    $.getJSON(url + apiKey + "/" + latitude + "," + longitude + "?callback=?", function(data) {
-     //console.log(data);
-     // $('#weather').html('and the current precipitation intensity is: ' + data.currently.precipIntensity);
-      console.log(data.currently.precipIntensity);
-      var waterFall = data.currently.precipIntensity;
-      // var waterFall = 2
-
-     // Determine which classes we add to our body
-      if ( waterFall >= 0.039 ) {
-        $('body').addClass('open weather-sucks precip-' + waterFall);
-      } else {
-        $('body').addClass('open weather-rocks precip-' + waterFall);
-      }
-
-    });
-
+   // Determine which classes we add to our body
+    if ( waterFall >= 0.039 ) {
+      $('body').addClass('open weather-sucks precip-' + waterFall);
+    } else {
+      $('body').addClass('open weather-rocks precip-' + waterFall);
+    }
+  });
 };
 
 $(document).on('page:change', load);
