@@ -1,40 +1,43 @@
 <div class="users-show">
   <h1><%= @user.first_name %>'s Profile</h1>
-  <div class="users-private">
-    <% if @user == current_user %>
-      <div class="users-info" id="users-edit">
-        (<%= link_to 'Edit profile', edit_user_path(@user) %>)
-      </div>
-      <div class="users-info section-label" id="users-private-label">
-        Personal Info (seen by only you):
-      </div>
-      <div class="users-info" id="users-location">
-        Full Name: <%= @user.first_name %> <%= @user.last_name %><br/>
-        Street Address: <%= @user.street_address %><br/>
-        City: <%= @user.city %><br/>
-        State: <%= @user.state %><br/>
-        Zip Code: <%= @user.zip_code %>
-      </div>
-    <% end %>
-  </div>
+  <div class="users-details">
+    <div class="users-private">
+      <% if @user == current_user %>
+        <div class="users-info" id="users-edit">
+          (<%= link_to 'Edit profile', edit_user_path(@user) %>)
+        </div>
+        <div class="users-info section-label" id="users-private-label">
+          Personal Info (seen by only you):
+        </div>
+        <div class="users-info" id="users-location">
+          Full Name: <%= @user.first_name %> <%= @user.last_name %><br/>
+          Street Address: <%= @user.street_address %><br/>
+          City: <%= @user.city %><br/>
+          State: <%= @user.state %><br/>
+          Zip Code: <%= @user.zip_code %>
+        </div>
+      <% end %>
+    </div>
 
-  <div class="users-global">
-    <% if @user == current_user %>
-      <div class="users-info section-label" id="users-global-label">
-        Profile Info (seen by everyone):
-      </div>
-    <% end %>
+    <div class="users-global">
+      <% if @user == current_user %>
+        <div class="users-info section-label" id="users-global-label">
+          Profile Info (seen by everyone):
+        </div>
+      <% end %>
 
-    <div class="users-info" id="users-photo">
-      <h3>Profile Photo:</h3><br/>
-      <img src="<%= @user.profile_photo %>">
+      <div class="users-info" id="users-photo">
+        <h3>Profile Photo:</h3><br/>
+        <img src="<%= @user.profile_photo %>">
+      </div>
+      <div class="users-info" id="users-about">
+        <h3>About:</h3><br/>
+        <%= @user.about %><br/>
+      </div>
+      <div class="users-info" id="users-hosted">
+        <h3>Events hosted:</h3><br/>
+      </div>
     </div>
-    <div class="users-info" id="users-about">
-      <h3>About:</h3><br/>
-      <%= @user.about %><br/>
-    </div>
-    <div class="users-info" id="users-hosted">
-      <h3>Events hosted:</h3><br/>
-    </div>
+    <!-- Add back button to event page -->
   </div>
 </div>
