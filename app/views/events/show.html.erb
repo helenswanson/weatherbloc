@@ -10,50 +10,48 @@
       <% end %>
     </div>
 
-    <div class="event-details">
-      <div>
-        <strong>Categories:</strong>
-        <ul>
-          <% @event.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="event-details">
-        <strong>Description:</strong><br/><%= @event.description %><br/><br/>
-        <strong>Available Seats:</strong> <%= @event.available_seats %><br/><br/>
-        <strong>Start Time:</strong> <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
-        <strong>End Time:</strong> <%= @event.end_time.hour %>:<%= @event.end_time.min %>
-      </div>
-
-      <div class="event-details">
-        <% if @event.host != current_user %>
-          <% if current_user.is_attending?(@event) %>
-            <% if @event.attendees.count >= 3 %>
-              Event Location:<br/>
-              <%= @event.host.street_address %><br/>
-              <%= @event.host.city %>, <%= @event.host.state %><br/>
-              <%= @event.host.zip_code %>
-            <% end %>
-            <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
-          <% else %>
-            <%= button_to 'RSVP', event_attendees_path(@event), id: 'rsvp-button' %>
-          <% end %>
+    <div class="event-info">
+      <strong>Categories:</strong>
+      <ul>
+        <% @event.categories.each do |category| %>
+          <li><%= category.name %></li>
         <% end %>
-      </div>
-
-      <div class="event-details">
-        <strong>Current Attendees:</strong><br/>
-        <ul>
-          <% @attendees.each do |attendee| %>
-            <li><%= attendee.user.first_name %></li><br/>
-          <% end %>
-        </ul>
-      </div>
+      </ul>
     </div>
 
-    <div class="event-details">
+    <div class="event-info">
+      <strong>Description:</strong><br/><%= @event.description %><br/><br/>
+      <strong>Available Seats:</strong> <%= @event.available_seats %><br/><br/>
+      <strong>Start Time:</strong> <%= @event.start_time.hour %>:<%= @event.start_time.min %><br/>
+      <strong>End Time:</strong> <%= @event.end_time.hour %>:<%= @event.end_time.min %>
+    </div>
+
+    <div class="event-info">
+      <% if @event.host != current_user %>
+        <% if current_user.is_attending?(@event) %>
+          <% if @event.attendees.count >= 3 %>
+            Event Location:<br/>
+            <%= @event.host.street_address %><br/>
+            <%= @event.host.city %>, <%= @event.host.state %><br/>
+            <%= @event.host.zip_code %>
+          <% end %>
+          <%= button_to 'Withdraw RSVP', event_attendee_path(@event, current_user.attendee_for(@event)), method: :delete %>
+        <% else %>
+          <%= button_to 'RSVP', event_attendees_path(@event), id: 'rsvp-button' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="event-info">
+      <strong>Current Attendees:</strong><br/>
+      <ul>
+        <% @attendees.each do |attendee| %>
+          <li><%= attendee.user.first_name %></li><br/>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="event-info">
       <%= link_to 'Back to events list', events_path %>
     </div>
   </div>
