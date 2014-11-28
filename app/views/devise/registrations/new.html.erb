@@ -1,29 +1,31 @@
-<h2>Sign up</h2>
-<p>* Required information</p><br/>
+<div class="registration-new">
+  <h2>Sign up</h2>
+  <p>* Required information</p><br/>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' },
-  wrapper: :horizontal_form,
-) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' },
+    wrapper: :horizontal_form,
+  ) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, label_html: { class: 'password' } %>
-    <%= f.input :password_confirmation, required: true, label: 'Password Confirmation', label_html: { class: 'password-confirmation' } %>
-    <br/><br/>
-    <%= f.input :first_name, required: true, label: 'First Name' %>
-    <%= f.input :last_name, required: true, label: 'Last Name' %>
-    <%= f.input :street_address, required: true, label: 'Street Address' %>
-    <%= f.input :city, required: true %>
-    <%= f.input :state, required: true %>
-    <%= f.input :zip_code, required: true, label: 'Zip Code' %>
-    <%= f.input :about %>
-    <%= f.input :profile_photo, label: 'Profile Photo' %><br/>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :password, required: true, label_html: { class: 'password' } %>
+      <%= f.input :password_confirmation, required: true, label: 'Password Confirmation', label_html: { class: 'password-confirmation' } %>
+      <br/><br/>
+      <%= f.input :first_name, required: true, label: 'First Name' %>
+      <%= f.input :last_name, required: true, label: 'Last Name' %>
+      <%= f.input :street_address, required: true, label: 'Street Address' %>
+      <%= f.input :city, required: true %>
+      <%= f.input :state, required: true %>
+      <%= f.input :zip_code, required: true, label: 'Zip Code' %>
+      <%= f.input :about %>
+      <%= f.input :profile_photo, label: 'Profile Photo' %><br/>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %><br/>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %><br/>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>

@@ -186,6 +186,7 @@ body:not(.loaded) .appear {
   width: 50%;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 15px;
 }
 
 .form-inputs label {
@@ -193,7 +194,7 @@ body:not(.loaded) .appear {
   display: inline-block;
   width: 50%;
   float: left;
-  padding-right: 15px;
+  padding-right: 20px;
   text-align: right;
 }
 
