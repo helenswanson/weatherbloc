@@ -105,43 +105,43 @@ body {
 }
 
 .curtain-down {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-    -webkit-transition: 500ms ease;
-    transition: transform 500ms ease;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: 500ms ease;
+  transition: transform 500ms ease;
 }
 
 .curtain-up {
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%);
-    -webkit-transition: -webkit-transform 500ms ease;
-    transition: transform 500ms ease;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
 }
 
 .open .curtain-down, .open .curtain-up {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
 }
 
 .weather-sucks .curtain-down {
-    color: #eceff1;
-    background-color: #90a4ae;
+  color: #eceff1;
+  background-color: #90a4ae;
 }
 
 .weather-rocks .curtain-up {
-    background-color: #fff176;
+  background-color: #fff176;
 }
 
 /*.form-horizontal .control-label {
@@ -172,31 +172,29 @@ body:not(.loaded) .appear {
 .loaded .appear.delay-2 {
   -webkit-transition-delay: 1.5s;
   transition-delay: 1.5s;
-/*  margin-top: 15px;
-  margin-bottom: 30px;*/
 }
 
 @media (min-width: 768px) {
   .navbar-nav {
-  float: right;
-  margin: 0;
+    float: right;
+    margin: 0;
   }
 }
 
 .form-inputs {
-position: relative;
-width: 50%;
-margin-right: auto;
-margin-left: auto;
+  position: relative;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .form-inputs label {
-position: relative;
-display: inline-block;
-width: 50%;
-float: left;
-padding-right: 15px;
-text-align: right;
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  float: left;
+  padding-right: 15px;
+  text-align: right;
 }
 
 /*Below needs refactoring*/
