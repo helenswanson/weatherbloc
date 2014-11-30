@@ -248,6 +248,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   launchy
+  nokogiri
   pg
   pry-rails
   quiet_assets

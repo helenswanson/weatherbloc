@@ -16,6 +16,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'nokogiri'
 gem 'devise'
 gem 'kaminari'
 gem 'simple_form'
